@@ -1,4 +1,4 @@
-const CACHE_NAME = 'laitalia-v1';
+const CACHE_NAME = 'laitalia-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

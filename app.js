@@ -391,10 +391,10 @@ function handleSearch(query) {
                     <h4>${prod.nombre}</h4>
                     <p style="font-size: 0.7rem; color: var(--primary); margin-bottom: 5px; text-transform: uppercase;">${prod.categoria}</p>
                     ${stockHTML}
-                    <p style="color: var(--text-muted); font-size: 0.9rem; flex-grow: 1;">${prod.descripcion}</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">${prod.descripcion}</p>
                     <p class="price">$${prod.precio.toLocaleString('es-AR')}</p>
+                    <button class="add-to-cart-btn" onclick="agregarAlCarrito(${prod.id}, event)" ${agotado ? 'disabled' : ''}>${agotado ? 'Sin stock' : 'Añadir al pedido'}</button>
                 </div>
-                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${prod.id}, event)" ${agotado ? 'disabled' : ''}>${agotado ? 'Sin stock' : 'Añadir al pedido'}</button>
             `;
             resultsGrid.appendChild(card);
         });
@@ -416,6 +416,7 @@ function cerrarTodo() {
     document.getElementById('category-modal').classList.remove('open');
     document.getElementById('cart-sidebar').classList.remove('open');
     document.getElementById('ui-overlay').classList.remove('open');
+    document.body.style.overflow = '';
 }
 
 function abrirModalCategoria(cat) {
@@ -451,10 +452,10 @@ function abrirModalCategoria(cat) {
                 <div class="card-content">
                     <h4>${prod.nombre}</h4>
                     ${stockHTML}
-                    <p style="color: var(--text-muted); font-size: 0.9rem; flex-grow: 1;">${prod.descripcion}</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">${prod.descripcion}</p>
                     <p class="price">$${prod.precio.toLocaleString('es-AR')}</p>
+                    <button class="add-to-cart-btn" onclick="agregarAlCarrito(${prod.id}, event)" ${agotado ? 'disabled' : ''}>${agotado ? 'Sin stock' : 'Añadir al pedido'}</button>
                 </div>
-                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${prod.id}, event)" ${agotado ? 'disabled' : ''}>${agotado ? 'Sin stock' : 'Añadir al pedido'}</button>
             `;
             container.appendChild(card);
         });
@@ -463,11 +464,13 @@ function abrirModalCategoria(cat) {
     document.getElementById('cart-sidebar').classList.remove('open');
     overlay.classList.add('open');
     modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
 }
 
 function cerrarModalCategoria() {
     document.getElementById('category-modal').classList.remove('open');
     document.getElementById('ui-overlay').classList.remove('open');
+    document.body.style.overflow = '';
 }
 
 /* ============================================================
@@ -482,10 +485,12 @@ function toggleCart() {
     if (sidebar.classList.contains('open')) {
         sidebar.classList.remove('open');
         overlay.classList.remove('open');
+        document.body.style.overflow = '';
     } else {
         modal.classList.remove('open');
         sidebar.classList.add('open');
         overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -774,6 +779,34 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     cargarCarrito();
 
+    // ── Reveal on scroll ──────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Parallax hero ─────────────────────────────────────────
+    const parallaxBg = document.getElementById('parallax-bg');
+    if (parallaxBg) {
+        window.addEventListener('scroll', () => {
+            const offset = window.scrollY;
+            parallaxBg.style.transform = `scale(1.1) translateY(${offset * 0.3}px)`;
+        }, { passive: true });
+    }
+
+    // ── Navbar shrink on scroll ───────────────────────────────
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            navbar.style.padding = window.scrollY > 50 ? '10px 5%' : '15px 5%';
+        }, { passive: true });
+    }
+
     try {
         const response = await fetch(CONFIG.CSV_URL + "&t=" + new Date().getTime(), { cache: "no-store" });
         if (!response.ok) throw new Error("Error HTTP " + response.status);
@@ -785,6 +818,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (grid) grid.innerHTML = '<p style="color: #ef4444; text-align: center; width: 100%;">Error al cargar el menú. Por favor, actualizá la página.</p>';
     }
 });
+
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(err => {
