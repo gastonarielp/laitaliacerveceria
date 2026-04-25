@@ -1,0 +1,21 @@
+{
+  "name": "La Italia Cervecería",
+  "short_name": "La Italia",
+  "description": "Tu minimercado de bebidas más completo en Formosa. Pedí online por WhatsApp.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#FFD500",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/449860129_488919840316079_8242876178337059947_n.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "food"],
+  "lang": "es",
+  "dir": "ltr"
+}

@@ -1,953 +1,354 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Italia Cervecería | Minimercado de Bebidas en Formosa</title>
-    <meta name="description" content="La Italia Cervecería es tu minimercado de bebidas más completo en Formosa. Abierto fines de semana hasta las 7 AM. Vinos, destilados, cervezas, snacks y más.">
-    <meta name="keywords" content="cervecería formosa, bebidas formosa, kiosco 24 horas, alcohol delivery formosa, minimercado formosa, previa, comprar bebidas">
+    <meta name="description" content="La Italia Cervecería es tu minimercado de bebidas más completo en Formosa. Cervezas, vinos, destilados, snacks y más. Abiertos cuando más nos necesitás.">
+    <meta name="keywords" content="cervecería formosa, bebidas formosa, kiosco 24 horas, alcohol delivery formosa, minimercado formosa, previa">
     <meta property="og:title" content="La Italia Cervecería | Bebidas en Formosa">
-    <meta property="og:description" content="Tu minimercado de bebidas más completo. Abiertos cuando más nos necesitas. ¡Haz tu pedido ahora!">
+    <meta property="og:description" content="Tu minimercado de bebidas más completo. Abiertos los fines de semana hasta las 7 AM.">
     <meta property="og:type" content="website">
+    <meta name="theme-color" content="#FFD500">
+    
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./assets/449860129_488919840316079_8242876178337059947_n.jpg" type="image/jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #FFD500;
-            --bg: #0A0A0A;
-            --surface: #1A1A1A;
-            --text: #FFFFFF;
-            --text-muted: #A0A0A0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .nav-logo {
-            font-family: 'Anton', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Nav */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-logo {
-            font-size: 24px;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-shadow: 0 0 10px rgba(255, 213, 0, 0.3);
-        }
-
-        .nav-logo img {
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 0 20px;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('assets/Genera_un_fondo_202604231236.jpeg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.35;
-            z-index: -1;
-            transform: scale(1.1);
-            filter: grayscale(0.5);
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0; height: 300px;
-            background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
-            z-index: -1;
-        }
-
-        .hero h1 {
-            font-size: clamp(4rem, 10vw, 8rem);
-            line-height: 1;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.9);
-            margin-top: 50px;
-        }
-
-        .hero p {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            max-width: 600px;
-            margin-bottom: 40px;
-            color: #ddd;
-            text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.9);
-        }
-
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--primary);
-            color: #000;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: 800;
-            text-decoration: none;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 213, 0, 0.4);
-        }
-        
-        /* Scroll Down Indicator */
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            color: var(--text-muted);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-15px) translateX(-50%); }
-            60% { transform: translateY(-7px) translateX(-50%); }
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 50px;
-            color: var(--primary);
-            text-align: center;
-            text-shadow: 0 0 20px rgba(255, 213, 0, 0.1);
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .stat-item h3 {
-            font-size: 4rem;
-            color: var(--text);
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            color: var(--primary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Products / Services */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background-color: var(--surface);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(255, 213, 0, 0.15) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            border-color: rgba(255, 213, 0, 0.3);
-        }
-        
-        .product-card:hover::before {
-            opacity: 1;
-        }
-
-        .product-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px; height: 80px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s;
-        }
-        
-        .product-card:hover .product-icon {
-            transform: scale(1.1) rotate(5deg);
-            border-color: rgba(255, 213, 0, 0.3);
-        }
-
-        .product-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .product-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* Galeria */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.6s, filter 0.6s;
-            filter: grayscale(0.5);
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 10px;
-            background: var(--surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.08);
-            filter: grayscale(0);
-        }
-
-        /* Contact & Footer */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            background: var(--surface);
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-info h3 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            margin-bottom: 30px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .contact-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px; height: 45px;
-            background: rgba(255, 213, 0, 0.1);
-            border-radius: 50%;
-            color: var(--primary);
-        }
-
-        .contact-item p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-top: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--text);
-            text-decoration: none;
-            transition: background 0.3s, color 0.3s, transform 0.3s;
-        }
-
-        .social-btn.ig-hover:hover {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            transform: translateY(-5px);
-        }
-        
-        .social-btn.fb-hover:hover {
-            background: #1877F2;
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        .social-btn.wa-hover:hover {
-            background: #25D366;
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            margin-top: 50px;
-        }
-        
-        /* Floating WhatsApp Button */
-        .floating-wa {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .floating-wa:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Cart & Modal Styles */
-        .cart-floating-btn {
-            position: fixed;
-            bottom: 110px;
-            right: 30px;
-            background-color: var(--primary);
-            color: #000;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(255, 213, 0, 0.4);
-            z-index: 1000;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cart-floating-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(255, 213, 0, 0.6);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: #ff3333;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid var(--bg);
-        }
-
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 100%;
-            max-width: 400px;
-            height: 100vh;
-            background: var(--surface);
-            z-index: 10000;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
-        }
-
-        .cart-sidebar.open {
-            right: 0;
-        }
-
-        .ui-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-
-        .ui-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .cart-header, .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h2, .modal-header h2 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 5px;
-            transition: color 0.3s;
-        }
-
-        .close-btn:hover {
-            color: var(--text);
-        }
-
-        .cart-items-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .cart-item {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-item-info h4 { margin-bottom: 5px; color: var(--text); }
-        .cart-item-info p { color: var(--primary); font-weight: bold; }
-        .cart-item-controls { display: flex; align-items: center; gap: 10px; }
-
-        .qty-btn {
-            background: var(--primary);
-            border: none;
-            width: 28px;
-            height: 28px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(0,0,0,0.2);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.3s;
-        }
-
-        .checkout-btn:hover { background: #1ebc5a; }
-
-        /* Category Modal */
-        .category-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90%;
-            max-width: 800px;
-            max-height: 85vh;
-            background: var(--surface);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            z-index: 10000;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-
-        .category-modal.open {
-            opacity: 1;
-            pointer-events: all;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .modal-body {
-            padding: 20px;
-            overflow-y: auto;
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .modal-product-card {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 15px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .modal-product-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: none; /* Oculto por defecto si no hay imagen */
-        }
-
-        .modal-product-card h4 { font-size: 1.2rem; color: var(--text); margin-bottom: 5px; }
-        .modal-product-card .desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
-        .modal-product-card .price { font-size: 1.3rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; }
-
-        .add-to-cart-btn {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 10px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .add-to-cart-btn:hover {
-            background: var(--primary);
-            color: #000;
-        }
-
-        /* Update original product card to look clickable */
-        .product-card {
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .cart-sidebar { max-width: 100%; }
-            .category-modal { width: 95%; max-height: 90vh; }
-            .modal-body { grid-template-columns: 1fr; }
-        }
-
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .contact-container { grid-template-columns: 1fr; padding: 30px; }
-            section { padding: 60px 5%; }
-            .hero h1 { font-size: 3.5rem; }
-            .stat-item h3 { font-size: 3rem; }
-            .floating-wa { bottom: 20px; right: 20px; width: 55px; height: 55px; }
-        }
-    </style>
+    
+    <!-- Link a estilos externos -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Schema.org para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LiquorStore",
+      "name": "La Italia Cervecería",
+      "image": "assets/449860129_488919840316079_8242876178337059947_n.jpg",
+      "url": "https://tuusuario.github.io/laitalia/",
+      "telephone": "+5493704812504",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Italia 2985",
+        "addressLocality": "Formosa",
+        "addressRegion": "Formosa",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.1818167,
+        "longitude": -58.1923253
+      },
+      "priceRange": "$$"
+    }
+    </script>
 </head>
 
 <body>
 
-    <nav>
-        <a href="#" class="nav-logo">
-            <img src="assets/449860129_488919840316079_8242876178337059947_n.jpg" alt="Logo" onerror="this.style.display='none'">
-            LA ITALIA
-        </a>
-        <div class="nav-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#productos">Productos</a>
-            <a href="#contacto">Contacto</a>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#inicio" onclick="closeMobileMenu()">Inicio</a>
+        <a href="#productos" onclick="closeMobileMenu()">Productos</a>
+        <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+        <a href="https://www.instagram.com/laitaliacerveceria/" target="_blank" onclick="closeMobileMenu()">📸 Instagram</a>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-left">
+            <a href="#" class="nav-logo">
+                <img src="assets/449860129_488919840316079_8242876178337059947_n.jpg" alt="La Italia Logo" onerror="this.style.display='none'">
+                <span>LA ITALIA</span>
+            </a>
+            <div class="status-badge cerrado" id="status-badge">
+                <span class="status-dot"></span>
+                <span id="status-text">Cargando...</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#contacto">Contacto</a>
+                <a href="https://www.instagram.com/laitaliacerveceria/" target="_blank" class="ig-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    Instagram
+                </a>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">🌙</button>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
+    <!-- Hero -->
     <header class="hero" id="inicio">
         <div class="hero-bg" id="parallax-bg"></div>
-        <h1 class="reveal">LA ITALIA<br><span style="color: white;">CERVECERÍA</span></h1>
-        <p class="reveal stagger-1">Tu minimercado de bebidas más completo en Formosa. Abierto cuando más nos necesitas.</p>
-        <a href="https://wa.me/5493704812504" target="_blank" class="cta-btn reveal stagger-2">
-            <!-- Icono WhatsApp inline -->
-            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-            </svg>
-            Haz tu pedido
+        <h1 class="reveal stagger-1">LA ITALIA<br><span>CERVECERÍA</span></h1>
+        <p class="reveal stagger-2">Tu minimercado de bebidas más completo en Formosa. Abierto cuando más nos necesitás.</p>
+        <a href="#productos" class="cta-btn reveal stagger-2" id="hero-cta">
+            Hacer mi pedido
         </a>
-        <div class="scroll-down reveal stagger-3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="30" height="30">
-                <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-        </div>
     </header>
 
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promo-banner">
+        <div class="promo-content">
+            <span class="promo-icon" id="promo-icon">🔥</span>
+            <span class="promo-text" id="promo-text"></span>
+            <span class="promo-desc" id="promo-desc"></span>
+        </div>
+        <button class="promo-close" onclick="cerrarPromo()">✕</button>
+    </div>
+
+    <!-- Sobre Nosotros -->
     <section id="nosotros">
-        <h2 class="section-title reveal">El Punto de Encuentro</h2>
+        <h2 class="section-title reveal">El Punto de <span>Encuentro</span></h2>
+        <p class="section-subtitle reveal">Todo lo necesario para tus previas, juntadas o eventos.</p>
         <div style="text-align: center; max-width: 800px; margin: 0 auto;" class="reveal stagger-1">
-            <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.8;">
-                En <strong>La Italia Cervecería</strong> tenemos todo lo necesario para tus previas, juntadas o eventos.
-                Ofrecemos la mayor variedad en bebidas con y sin alcohol, complementos, snacks y mucho más.
-                Si la noche es joven, nosotros también: los fines de semana <strong>abrimos hasta las 7:00 AM</strong>
-                de corrido.
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted);">
+                Ofrecemos la mayor variedad en bebidas con y sin alcohol, complementos, snacks y mucho más. 
+                Si la noche es joven, nosotros también: los fines de semana abrimos <strong>hasta las 7:00 AM</strong> de corrido.
             </p>
         </div>
-
-        <div class="stats-grid">
-            <div class="stat-item reveal stagger-1">
-                <h3 class="counter" data-target="1000">0</h3>
-                <p>Variedades</p>
-            </div>
-            <div class="stat-item reveal stagger-2">
-                <h3 class="counter" data-target="21">0</h3>
-                <p>Horas Abierto (Finde)</p>
-            </div>
-            <div class="stat-item reveal stagger-3">
-                <h3 class="counter" data-target="100">0</h3>
-                <p>% Actitud</p>
-            </div>
-        </div>
     </section>
 
+    <!-- Productos y Menú -->
     <section id="productos">
-        <h2 class="section-title reveal">Nuestra Oferta</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;" class="reveal">Haz clic en una categoría para ver los productos, armar tu pedido y enviarlo por WhatsApp.</p>
-        
-        <div class="products-grid">
-            <div class="product-card reveal stagger-1" onclick="abrirModalCategoria('Cervezas & Vinos', 'Cerveza')">
-                <div class="product-icon">🍺</div>
-                <h3>Cervezas & Vinos</h3>
-                <p>Marcas nacionales e importadas, cervezas artesanales, y los mejores vinos para acompañar tus momentos.</p>
+        <h2 class="section-title reveal">Nuestra <span>Oferta</span></h2>
+        <p class="section-subtitle reveal">Explorá las categorías y armá tu pedido para WhatsApp</p>
+
+        <!-- Barra de Búsqueda -->
+        <div class="search-container reveal">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" id="search-input" placeholder="Buscar bebidas, snacks..." oninput="handleSearch(this.value)">
+            <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+        </div>
+
+        <!-- Resultados de Búsqueda -->
+        <div class="search-results" id="search-results">
+            <p class="search-results-title" id="search-results-title"></p>
+            <div class="search-results-grid" id="search-results-grid"></div>
+        </div>
+
+        <!-- Grid de Categorías Dinámico (se llena vía JS, incluye skeletons) -->
+        <div class="products-grid" id="categorias-grid">
+            <div class="product-card skeleton skeleton-card"><div class="skeleton-circle"></div><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div>
+            <div class="product-card skeleton skeleton-card"><div class="skeleton-circle"></div><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div>
+            <div class="product-card skeleton skeleton-card"><div class="skeleton-circle"></div><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery-section visible" id="galeria">
+        <h2 class="section-title reveal">Galería de <span>La Italia</span></h2>
+        <p class="section-subtitle reveal">Un vistazo a nuestras opciones</p>
+        <div class="gallery-scroll" id="gallery-scroll">
+            <div class="gallery-item">
+                <img src="assets/image copy.png" alt="La Italia local" onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80'">
+                <div class="gallery-caption">Nuestro punto de entrega</div>
             </div>
-            <div class="product-card reveal stagger-2" onclick="abrirModalCategoria('Destilados & Licores', 'Destilado')">
-                <div class="product-icon">🥃</div>
-                <h3>Destilados & Licores</h3>
-                <p>Vodka, Gin, Fernet, Whisky y todas las bases para armar los tragos perfectos en casa.</p>
+            <div class="gallery-item">
+                <img src="assets/449860129_488919840316079_8242876178337059947_n.jpg" alt="Productos" onerror="this.src='https://images.unsplash.com/photo-1575037614876-c385ce81156d?auto=format&fit=crop&w=600&q=80'">
+                <div class="gallery-caption">Las bebidas que buscás</div>
             </div>
-            <div class="product-card reveal stagger-3" onclick="abrirModalCategoria('Sin Alcohol', 'Sin Alcohol')">
-                <div class="product-icon">🥤</div>
-                <h3>Sin Alcohol</h3>
-                <p>Aguas saborizadas, gaseosas, energizantes, jugos y todo para hidratarse y mezclar.</p>
-            </div>
-            <div class="product-card reveal stagger-1" onclick="abrirModalCategoria('Minimercado', 'Minimercado')">
-                <div class="product-icon">🍫</div>
-                <h3>Minimercado</h3>
-                <p>Hielo, snacks, papas fritas, chocolates y todo lo que te falte a último momento, lo tenemos.</p>
-            </div>
-            <div class="product-card reveal stagger-2" onclick="abrirModalCategoria('Bazar y Regalos', 'Bazar')">
-                <div class="product-icon">🎁</div>
-                <h3>Bazar y Regalos</h3>
-                <p>Tenemos una buena variedad de combos para regalar y armar con los mejores productos.</p>
-            </div>
-            <div class="product-card reveal stagger-3" onclick="abrirModalCategoria('Conservadoras', 'Conservadora')">
-                <div class="product-icon">📦</div>
-                <h3>Conservadoras</h3>
-                <p>Tenemos conservadoras en varias presentaciones, desde bandoleras hasta las más grandes, listas para usar en tus eventos.</p>
+            <div class="gallery-item" style="display: flex; align-items: center; background: var(--surface);">
+                <img src="assets/image.png" alt="Detalles" style="object-fit: contain; padding: 20px;">
+                <div class="gallery-caption">Tu punto favorito</div>
             </div>
         </div>
     </section>
 
-    <section id="galeria">
-        <h2 class="section-title reveal">Galería</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item reveal stagger-1">
-                <img src="assets/image copy.png" alt="La Italia" class="gallery-img"
-                    onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80'">
-            </div>
-            <div class="gallery-item reveal stagger-2">
-                <img src="assets/449860129_488919840316079_8242876178337059947_n.jpg" alt="Productos La Italia"
-                    class="gallery-img"
-                    onerror="this.src='https://images.unsplash.com/photo-1575037614876-c385ce81156d?auto=format&fit=crop&w=600&q=80'">
-            </div>
-            <div class="gallery-item reveal stagger-3">
-                <img src="assets/image.png" alt="Logo Detalles" class="gallery-img"
-                    style="object-fit: contain; padding: 20px;">
-            </div>
-        </div>
-    </section>
-
+    <!-- Ubicación y Contacto -->
     <section id="contacto">
-        <h2 class="section-title reveal">Contacto & Ubicación</h2>
+        <h2 class="section-title reveal">Dónde <span>Estamos</span></h2>
+
         <div class="contact-container reveal stagger-1">
             <div class="contact-info">
-                <h3>Te esperamos</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    </div>
-                    <div>
-                        <strong style="color:white; font-size: 1.1rem;">Dirección</strong>
-                        <p>Avenida Italia 2985<br>Formosa, Argentina</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <div>
-                        <strong style="color:white; font-size: 1.1rem;">Horarios</strong>
-                        <p>Lunes a Jueves: 8:30 a 14:00 y 17:00 a 23:00 hs.<br>
-                            Viernes y Sábados: De corrido hasta las 7:00 AM.</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    </div>
-                    <div>
-                        <strong style="color:white; font-size: 1.1rem;">WhatsApp</strong>
-                        <p>+54 3704 812504</p>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://www.instagram.com/laitaliacerveceria/" target="_blank" class="social-btn ig-hover" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://www.facebook.com/102499292623110" target="_blank" class="social-btn fb-hover" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                    </a>
-                </div>
+                <h3>¡Te esperamos!</h3>
+                <p>
+                    <strong>📱 Pedidos por WhatsApp:</strong> +54 3704 812504<br>
+                    <strong>📍 Dirección:</strong> Avenida Italia 2985, Formosa<br>
+                    <strong>🛵 Delivery:</strong> Envíos rápidos a toda la ciudad.
+                </p>
+                <p>Consultá por envíos especiales o combos para grandes eventos.</p>
+                <a href="https://www.instagram.com/laitaliacerveceria/" target="_blank" class="cta-btn" style="padding: 12px 30px; font-size: 16px; margin-top: 10px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    Seguinos en Instagram
+                </a>
             </div>
-            <div style="min-height: 300px; border-radius: 15px; overflow: hidden; position: relative;">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14241.609072382903!2d-58.19232530000001!3d-26.1818167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945ca5e9d9af7a25%3A0xe543c72b21c4b726!2sAv.%20Italia%202985%2C%20P3600%20Formosa!5e0!3m2!1ses!2sar!4v1710000000000!5m2!1ses!2sar"
-                    width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14241.609072382903!2d-58.19232530000001!3d-26.1818167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945ca5e9d9af7a25%3A0xe543c72b21c4b726!2sAv.%20Italia%202985%2C%20P3600%20Formosa!5e0!3m2!1ses!2sar!4v1710000000000!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+        </div>
+
+        <!-- Bloque Semántico SEO -->
+        <div class="seo-block reveal">
+            <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 10px;">Tu Minimercado y Delivery de Bebidas de confianza</h3>
+            <p>Si buscás <strong>dónde comprar bebidas baratas en Formosa</strong> y que estén disponibles en horarios nocturnos, <strong>La Italia Cervecería</strong> es tu opción ideal. Nos especializamos en la venta al paso de <em>cervezas nacionales e importadas</em>, licores, destilados, bebidas sin alcohol, hielo y snacks. Tenemos cobertura completa mediante delivery de alcohol en Formosa para tus previas.</p>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy;
-            <script>document.write(new Date().getFullYear())</script> La Italia Cervecería. Todos los derechos reservados.
-        </p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo"><span>La Italia</span> Cervecería</div>
+                <p>El minimercado de bebidas más completo de Formosa Capital. Todo lo que te falte a último momento.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/laitaliacerveceria/" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nuestros Horarios</h4>
+                <div id="footer-hours">
+                    <!-- Se carga por JS -->
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="https://wa.me/5493704812504" target="_blank">📱 3704812504</a></li>
+                    <li><a href="https://www.instagram.com/laitaliacerveceria/" target="_blank">📸 @laitaliacerveceria</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="footer-year"></span> La Italia Cervecería. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-    <!-- Common Overlay -->
+    <!-- Modales UI -->
     <div class="ui-overlay" id="ui-overlay" onclick="cerrarTodo()"></div>
 
     <!-- Category Modal -->
     <div class="category-modal" id="category-modal">
         <div class="modal-header">
             <h2 id="modal-category-title">Categoría</h2>
-            <button class="close-btn" onclick="cerrarModalCategoria()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+            <button class="close-btn" onclick="cerrarModalCategoria()">✖</button>
         </div>
         <div class="modal-body" id="modal-products-container">
-            <!-- Productos renderizados aquí -->
-            <p style="color: var(--text-muted); text-align: center; width: 100%; grid-column: 1 / -1; margin-top: 50px;">Cargando productos...</p>
+            <!-- Cargados dinámicamente -->
         </div>
     </div>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/5493704812504" target="_blank" class="floating-wa" aria-label="Chat en WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="35" height="35">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2 id="cart-title">Tu Pedido</h2>
+            <button class="close-btn" onclick="toggleCart()">✖</button>
+        </div>
+
+        <!-- Paso 1: Carrito -->
+        <div class="cart-step active" id="step-1">
+            <div class="cart-items-container" id="cart-items">
+                <!-- Items del pedido -->
+            </div>
+            <div class="cart-footer">
+                <div class="delivery-options">
+                    <label>¿Cómo recibís tu pedido?</label>
+                    <div class="options-group">
+                        <button class="option-btn active" onclick="seleccionarMetodo('Envío a domicilio', this)">🛵 Envío</button>
+                        <button class="option-btn" onclick="seleccionarMetodo('Retiro en local', this)">🥡 Retiro</button>
+                    </div>
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total-price">$0</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="share-btn" onclick="compartirPedido()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        Compartir
+                    </button>
+                </div>
+                <button class="checkout-btn" onclick="irACheckout()">
+                    <span>Continuar</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Paso 2: Formulario -->
+        <div class="cart-step" id="step-2" style="padding: 25px; overflow-y: auto;">
+            <button class="back-to-cart" onclick="volverAlCarrito()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver
+            </button>
+            <h3 style="color: var(--primary); margin-bottom: 20px;">Datos del Pedido</h3>
+
+            <div class="checkout-form">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="form-nombre" placeholder="Ej: Gastón P.">
+                </div>
+
+                <div id="campo-direccion">
+                    <div class="form-group">
+                        <label>Dirección Exacta</label>
+                        <input type="text" id="form-direccion" placeholder="Calle y número">
+                    </div>
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group">
+                            <label>Barrio</label>
+                            <input type="text" id="form-barrio" placeholder="Ej: Centro">
+                        </div>
+                        <div class="form-group">
+                            <label>Dpto/Piso</label>
+                            <input type="text" id="form-dpto" placeholder="Opcional">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Método de Pago</label>
+                    <select id="form-pago" onchange="toggleVuelto()">
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Transferencia">Transferencia</option>
+                        <option value="Mercado Pago">Mercado Pago</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="campo-vuelto">
+                    <label>¿Con cuánto pagás? (Para el vuelto)</label>
+                    <input type="number" id="form-vuelto" placeholder="Ej: 5000">
+                </div>
+
+                <div class="form-group">
+                    <label>Notas / Aclaraciones</label>
+                    <textarea id="form-notas" rows="2" placeholder="Ej: Tocar timbre fuerte..."></textarea>
+                </div>
+            </div>
+
+            <button class="checkout-btn" onclick="enviarPedidoWhatsApp()" style="margin-top: 20px;">
+                Confirmar y Enviar WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Flotantes -->
+    <a href="https://wa.me/5493704812504" target="_blank" class="floating-wa" aria-label="WhatsApp directo">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="35" height="35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
         </svg>
     </a>
-
-    <!-- Floating Cart Button -->
-    <div class="cart-floating-btn" id="open-cart-btn" onclick="toggleCart()">
+    
+    <div class="cart-floating-btn" onclick="toggleCart()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
             <circle cx="9" cy="21" r="1"></circle>
             <circle cx="20" cy="21" r="1"></circle>
@@ -956,324 +357,8 @@
         <span class="cart-count" id="cart-count-badge">0</span>
     </div>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h2>Tu Pedido</h2>
-            <button class="close-btn" onclick="toggleCart()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-        <div class="cart-items-container" id="cart-items">
-            <p style="color: var(--text-muted); text-align: center; margin-top: 50px;">Tu carrito está vacío</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cart-total-price">$0</span>
-            </div>
-            <button class="checkout-btn" onclick="enviarPedidoWhatsApp()">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                </svg>
-                Confirmar Pedido
-            </button>
-        </div>
-    </div>
-
-    <script>
-        // Intersection Observer para revelar elementos al hacer scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-
-                    // Si es un número (counter), iniciamos la animación
-                    if (entry.target.classList.contains('stat-item')) {
-                        const counter = entry.target.querySelector('.counter');
-                        if (counter && !counter.classList.contains('counted')) {
-                            animateCounter(counter);
-                        }
-                    }
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Animación de los números
-        function animateCounter(counter) {
-            counter.classList.add('counted');
-            const target = +counter.getAttribute('data-target');
-            const duration = 2000; // ms
-            const stepTime = 20;
-            const steps = duration / stepTime;
-            const increment = target / steps;
-            let current = 0;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.innerText = target + (target > 500 ? '+' : '');
-                    clearInterval(timer);
-                } else {
-                    counter.innerText = Math.ceil(current);
-                }
-            }, stepTime);
-        }
-
-        // Efecto Parallax en el Hero
-        const parallaxBg = document.getElementById('parallax-bg');
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            if (parallaxBg && scrolled < window.innerHeight) {
-                parallaxBg.style.transform = `scale(1.1) translateY(${scrolled * 0.4}px)`;
-            }
-        });
-
-        // Cambio de estilo en Navbar al hacer scroll
-        const nav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(0, 0, 0, 0.9)';
-                nav.style.boxShadow = '0 5px 25px rgba(0,0,0,0.8)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.7)';
-                nav.style.boxShadow = 'none';
-            }
-        });
-
-        // ==========================================
-        // LÓGICA DEL CARRITO Y GOOGLE SHEETS
-        // ==========================================
-        
-        const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKIkR8jhqNWOgDx3-gwL25i0YFhf5y47Eu01jaCN4IleQPT_DKh0WBjopaDBywqpL0Hz_d0vetQAK8/pub?output=csv";
-        const numeroWhatsApp = "5493704812504";
-        
-        let productosDB = [];
-        let carrito = [];
-
-        // Inicializar: Leer CSV
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                // Añadimos un timestamp para evitar que el navegador o Google cacheen la respuesta
-                const urlSinCache = CSV_URL + "&t=" + new Date().getTime();
-                const response = await fetch(urlSinCache, { cache: "no-store" });
-                const csvText = await response.text();
-                procesarCSV(csvText);
-            } catch (error) {
-                console.error("Error al cargar productos:", error);
-            }
-        });
-
-        // Parsear CSV manual para no usar librerías externas
-        function procesarCSV(csvText) {
-            const lineas = csvText.trim().split('\n');
-            if (lineas.length <= 1) return; // Solo hay cabeceras o vacío
-            
-            for (let i = 1; i < lineas.length; i++) {
-                // regex para manejar comas dentro de campos (aunque es básico)
-                const valores = lineas[i].split(',');
-                if (valores.length >= 4) {
-                    productosDB.push({
-                        id: i,
-                        categoria: valores[0] ? valores[0].trim() : "Otros",
-                        nombre: valores[1] ? valores[1].trim() : "Producto",
-                        descripcion: valores[2] ? valores[2].trim() : "",
-                        precio: valores[3] ? parseFloat(valores[3].replace(/[^0-9.-]+/g,"")) : 0,
-                        imagen: valores[4] ? valores[4].trim() : ""
-                    });
-                }
-            }
-        }
-
-        // ==========================================
-        // CONTROL DE UI (Modales y Overlays)
-        // ==========================================
-
-        function cerrarTodo() {
-            document.getElementById('category-modal').classList.remove('open');
-            document.getElementById('cart-sidebar').classList.remove('open');
-            document.getElementById('ui-overlay').classList.remove('open');
-        }
-
-        function abrirModalCategoria(tituloPantalla, keyword) {
-            const keywordToSearch = keyword || tituloPantalla;
-            const modal = document.getElementById('category-modal');
-            const overlay = document.getElementById('ui-overlay');
-            const title = document.getElementById('modal-category-title');
-            const container = document.getElementById('modal-products-container');
-            
-            title.textContent = tituloPantalla;
-            container.innerHTML = ''; // limpiar
-
-            // Filtrar productos por nombre de categoría (búsqueda flexible)
-            const filtrados = productosDB.filter(p => 
-                p.categoria.toLowerCase().includes(keywordToSearch.toLowerCase()) || 
-                keywordToSearch.toLowerCase().includes(p.categoria.toLowerCase()) ||
-                p.categoria.toLowerCase().replace(/&/g, 'y') === tituloPantalla.toLowerCase().replace(/&/g, 'y')
-            );
-
-            if (productosDB.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; width: 100%; grid-column: 1 / -1;">Cargando base de datos o sin productos disponibles...</p>';
-            } else if (filtrados.length === 0) {
-                container.innerHTML = `<p style="color: var(--text-muted); text-align: center; width: 100%; grid-column: 1 / -1;">No hay productos cargados en la categoría "<b>${tituloPantalla}</b>" en el Google Sheet aún.</p>`;
-            } else {
-                filtrados.forEach(prod => {
-                    const card = document.createElement('div');
-                    card.className = 'modal-product-card';
-                    
-                    let imgHTML = '';
-                    if(prod.imagen && prod.imagen.length > 5) {
-                        imgHTML = `<img src="${prod.imagen}" alt="${prod.nombre}" class="modal-product-img" style="display:block;" onerror="this.style.display='none'">`;
-                    }
-
-                    card.innerHTML = `
-                        ${imgHTML}
-                        <h4>${prod.nombre}</h4>
-                        <p class="desc">${prod.descripcion}</p>
-                        <p class="price">$${prod.precio.toLocaleString('es-AR')}</p>
-                        <button class="add-to-cart-btn" onclick="agregarAlCarrito(${prod.id})">Añadir al Pedido</button>
-                    `;
-                    container.appendChild(card);
-                });
-            }
-
-            // Cerrar carrito si estaba abierto
-            document.getElementById('cart-sidebar').classList.remove('open');
-            
-            overlay.classList.add('open');
-            modal.classList.add('open');
-        }
-
-        function cerrarModalCategoria() {
-            document.getElementById('category-modal').classList.remove('open');
-            document.getElementById('ui-overlay').classList.remove('open');
-        }
-
-        function toggleCart() {
-            const sidebar = document.getElementById('cart-sidebar');
-            const overlay = document.getElementById('ui-overlay');
-            const modal = document.getElementById('category-modal');
-            
-            if (sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('open');
-            } else {
-                // Cerrar modal si estaba abierto
-                modal.classList.remove('open');
-                sidebar.classList.add('open');
-                overlay.classList.add('open');
-            }
-        }
-
-        // ==========================================
-        // FUNCIONES DEL CARRITO
-        // ==========================================
-
-        function agregarAlCarrito(idProducto) {
-            const producto = productosDB.find(p => p.id === idProducto);
-            if (!producto) return;
-
-            const itemEnCarrito = carrito.find(item => item.id === idProducto);
-            if (itemEnCarrito) {
-                itemEnCarrito.cantidad++;
-            } else {
-                carrito.push({ ...producto, cantidad: 1 });
-            }
-            
-            actualizarCarritoUI();
-            
-            // Animación visual de feedback en el botón flotante
-            const badge = document.getElementById('cart-count-badge');
-            badge.style.transform = 'scale(1.5)';
-            setTimeout(() => badge.style.transform = 'scale(1)', 200);
-        }
-
-        function modificarCantidad(idProducto, delta) {
-            const index = carrito.findIndex(item => item.id === idProducto);
-            if (index !== -1) {
-                carrito[index].cantidad += delta;
-                if (carrito[index].cantidad <= 0) {
-                    carrito.splice(index, 1);
-                }
-                actualizarCarritoUI();
-            }
-        }
-
-        function actualizarCarritoUI() {
-            const container = document.getElementById('cart-items');
-            const badge = document.getElementById('cart-count-badge');
-            const totalEl = document.getElementById('cart-total-price');
-            
-            let total = 0;
-            let cantidadItems = 0;
-            
-            if (carrito.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 50px;">Tu carrito está vacío</p>';
-                badge.textContent = '0';
-                totalEl.textContent = '$0';
-                return;
-            }
-
-            container.innerHTML = '';
-            
-            carrito.forEach(item => {
-                total += item.precio * item.cantidad;
-                cantidadItems += item.cantidad;
-                
-                const itemEl = document.createElement('div');
-                itemEl.className = 'cart-item';
-                itemEl.innerHTML = `
-                    <div class="cart-item-info">
-                        <h4>${item.nombre}</h4>
-                        <p>$${(item.precio * item.cantidad).toLocaleString('es-AR')}</p>
-                    </div>
-                    <div class="cart-item-controls">
-                        <button class="qty-btn" onclick="modificarCantidad(${item.id}, -1)">-</button>
-                        <span>${item.cantidad}</span>
-                        <button class="qty-btn" onclick="modificarCantidad(${item.id}, 1)">+</button>
-                    </div>
-                `;
-                container.appendChild(itemEl);
-            });
-            
-            badge.textContent = cantidadItems;
-            totalEl.textContent = '$' + total.toLocaleString('es-AR');
-        }
-
-        function enviarPedidoWhatsApp() {
-            if (carrito.length === 0) {
-                alert("Tu carrito está vacío.");
-                return;
-            }
-            
-            let mensaje = "¡Hola! Me gustaría realizar el siguiente pedido:\n\n";
-            let total = 0;
-            
-            carrito.forEach(item => {
-                mensaje += `• ${item.cantidad}x ${item.nombre} ($${(item.precio * item.cantidad).toLocaleString('es-AR')})\n`;
-                total += item.precio * item.cantidad;
-            });
-            
-            mensaje += `\n💰 *Total: $${total.toLocaleString('es-AR')}*\n\n`;
-            mensaje += "Por favor, indícame cómo seguimos con el pago y envío.";
-            
-            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+    <!-- Carga del script principal -->
+    <script src="./app.js"></script>
 </body>
+
 </html>

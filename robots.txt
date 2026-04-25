@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tuusuario.github.io/laitalia/sitemap.xml
